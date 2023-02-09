@@ -9,6 +9,7 @@ const Intern = require('./lib/intern');
 //Empty array to hold team members
 const teamMembers = [];
 
+//CLI input for Manager
 const addManager = [
     {
         type: 'input',
@@ -24,20 +25,12 @@ const addManager = [
         message: 'Enter manager email:'
     }, {
         type: 'input',
-        name: 'github',
-        message: 'Enter manager GitHub username:'
+        name: 'officenum',
+        messge: 'Enter manager office number:'
     }
 ]
 
-function init() {
-    inquirer.prompt(addManager)
-        .then((data) => {
-            const newManager = new Manager(data.name, data.id, data.email, data.github);
-            teamMembers.push(newManager);
-            addMember();
-        })
-};
-
+//Function to add a new team member
 function addMember() {
     inquirer
         .prompt([
@@ -58,13 +51,14 @@ function addMember() {
                     addIntern();
                     break;
                 case 'Finish':
-                    console.log(teamMembers);
                     console.log('Writing File...');
+                    renderCard(teamMembers);
                     break;
             }
         })
 }
 
+//CLI input for a new Engineer
 function addEngineer() {
     inquirer
         .prompt([
@@ -93,6 +87,7 @@ function addEngineer() {
         })
 }
 
+//CLI input for a new Intern
 function addIntern() {
     inquirer
         .prompt([
@@ -121,6 +116,93 @@ function addIntern() {
         })
 }
 
-init();
+function renderCard(teamMembers) {
 
-module.exports = teamMembers;
+    let markup = `
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale = 1.0">
+        <title>Team Builder | edX Carleton Bootcamps</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    
+    <body>
+        <header>
+            <h1 id="top">Team Profile</h1>
+        </header>
+    
+        <section class="content">
+        `;
+
+    for (i = 0; i < teamMembers.length; i++) {
+
+        switch (teamMembers[i].role) {
+
+            case 'Manager':
+
+                markup += `
+                <section class="card mgr-card">
+                <h1>${teamMembers[i].getRole()}</h1>
+                <p id="name">${teamMembers[i].getName()}</p>
+                <p>ID: ${teamMembers[i].getId()}</p>
+                <p>Email: <a href="mailto:${teamMembers[i].getEmail()}">${teamMembers[i].getEmail()}</a></p>
+                </section>
+                `;
+
+                break;
+
+            case 'Engineer':
+
+                markup += `
+                <section class="card eng-card">
+                <h1>${teamMembers[i].getRole()}</h1>
+                <p id="name">${teamMembers[i].getName()}</p>
+                <p>ID: ${teamMembers[i].getId()}</p>
+                <p>Email: <a href="mailto: ${teamMembers[i].getEmail()}">${teamMembers[i].getEmail()}</a></p>
+                <p>GitHub: <a href="https://github.com/${teamMembers[i].getGithub()}" target="_blank">${teamMembers[i].getGithub()}</a></p>
+                </section>
+                `
+                break;
+
+            case 'Intern':
+
+                markup += `
+                <section class="card int-card">
+                <h1>${teamMembers[i].getRole()}</h1>
+                <p id="name">${teamMembers[i].getName()}</p>
+                <p>ID: ${teamMembers[i].getId()}</p>
+                <p>Email: <a href="mailto: ${teamMembers[i].getEmail()}">${teamMembers[i].getEmail()}</a></p>
+                <p>School: ${teamMembers[i].getSchool()}</p>
+                </section>
+                `
+                break;
+
+        }
+    }
+
+    markup += `
+    </section>
+    </body>
+    
+    </html>`
+
+    fs.writeFile('./dist/index.html', markup, (err) =>
+        err ? console.log(err) : console.log("File successfully written !"));
+
+}
+
+//Initilization function
+function init() {
+    inquirer.prompt(addManager)
+        .then((data) => {
+            const newManager = new Manager(data.name, data.id, data.email, data.officenum);
+            teamMembers.push(newManager);
+            addMember();
+        })
+};
+
+//Call initialization function
+init();
