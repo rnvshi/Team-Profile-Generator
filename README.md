@@ -20,12 +20,14 @@ Below are screenshots of app use:
 
 <img width="1387" alt="Screenshot 2023-02-10 at 11 30 23 AM" src="https://user-images.githubusercontent.com/117702694/218151652-49bb50c0-8968-4c8f-a9fa-2fbabb2ace8c.png">
 <img width="1390" alt="Screenshot 2023-02-10 at 11 38 53 AM" src="https://user-images.githubusercontent.com/117702694/218151665-5e169dbf-2cab-48c9-985b-3a173b720f47.png">
+
+Demo webpage:
 <img width="1430" alt="Screenshot 2023-02-10 at 11 39 06 AM" src="https://user-images.githubusercontent.com/117702694/218151676-7488c062-865f-4607-a281-16fa462889e1.png">
+
+An associated demo generated HTML (index.html) file can be found in this repository under the dist directory.
 <img width="1434" alt="Screenshot 2023-02-10 at 11 39 25 AM" src="https://user-images.githubusercontent.com/117702694/218151683-a50fdf80-4b0c-4ac0-a229-42aa64c188a5.png">
 
 Walkthrough video: https://watch.screencastify.com/v/wXpaya3g9EofG3m5MPk6
-
-Demo webpage: https://rnvshi.github.io/Team-Profile-Generator
 
 ## License
 
