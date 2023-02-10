@@ -149,6 +149,7 @@ function renderCard(teamMembers) {
                 <p id="name">${teamMembers[i].getName()}</p>
                 <p>ID: ${teamMembers[i].getId()}</p>
                 <p>Email: <a href="mailto:${teamMembers[i].getEmail()}">${teamMembers[i].getEmail()}</a></p>
+                <p>Office: ${teamMembers[i].getOfficeNum()}
                 </section>
                 `;
 
