@@ -24,7 +24,8 @@ Below are screenshots of app use:
 <img width="1434" alt="Screenshot 2023-02-10 at 11 39 25 AM" src="https://user-images.githubusercontent.com/117702694/218151683-a50fdf80-4b0c-4ac0-a229-42aa64c188a5.png">
 
 Walkthrough video: https://watch.screencastify.com/v/wXpaya3g9EofG3m5MPk6
-Demo webpage: rnvshi.github.io/Team-Profile-Generator
+
+Demo webpage: https://rnvshi.github.io/Team-Profile-Generator
 
 ## License
 
